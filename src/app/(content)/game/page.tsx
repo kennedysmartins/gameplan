@@ -18,7 +18,7 @@ const game = () => {
 
           <Button className="w-24" variant={"outline"}><img src="https://cdn.svc.asmodee.net/production-unboxnowcom/uploads/2021/12/7Wonders-noirblanc.png" alt="7 Wonders"/></Button>
           </Link>
-          <Button className="w-24" variant={"default"}>T2R</Button>
+          <Button className="w-24" variant={"outline"}><img src="https://cdn.svc.asmodee.net/production-unboxnowcom/uploads/2022/01/TTR_LogoWhite-1.png" alt="7 Wonders"/></Button>
           <Button className="w-24" variant={"default"}>GWT</Button>
           <Button className="w-24" variant={"default"}>S.M</Button>
           <Button className="w-24" variant={"default"}>Bonfire</Button>
