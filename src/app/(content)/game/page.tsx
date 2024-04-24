@@ -14,7 +14,10 @@ const game = () => {
         </div>
       <div className="flex flex-col items-center gap-4">
         <div className="flex flex-wrap gap-4 w-56 items-center justify-center">
+          <Link href="/game/7wonders">
+
           <Button className="w-24" variant={"default"}>7 Wonders</Button>
+          </Link>
           <Button className="w-24" variant={"default"}>T2R</Button>
           <Button className="w-24" variant={"default"}>GWT</Button>
           <Button className="w-24" variant={"default"}>S.M</Button>
