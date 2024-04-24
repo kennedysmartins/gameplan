@@ -48,7 +48,7 @@ const game7wonders = () => {
 
             <h2>Distrubua seus pontos</h2>
 
-            <div className="flex flex-wrap gap-4 w-72 items-center justify-center">
+            <div className="flex flex-wrap gap-4 w-72 items-center justify-center my-4">
               <div className="flex gap-1 bg-gray-900 rounded-md p-1">
                 <Button
                   variant="ghost"
@@ -166,6 +166,59 @@ const game7wonders = () => {
                 </Button>
               </div>
 
+              <div className="flex gap-1 bg-gray-900 rounded-md p-1">
+                <Button variant="ghost" size={null} className="px-1">
+                  <Minus className="h-3 w-3" />
+                </Button>
+                <div className="relative flex items-center">
+                  <FaMagnifyingGlass className="absolute left-2 top-1/2 h-4 w-4 -translate-y-1/2 transform" />
+                  <Input placeholder="0" className="pl-8 w-[4.7rem]" type="number" />
+                </div>
+                <Button variant="ghost" size={null} className="px-1">
+                  <Plus className="h-3 w-3" />
+                </Button>
+              </div>
+
+              <div className="flex gap-1 bg-gray-900 rounded-md p-1">
+                <Button variant="ghost" size={null} className="px-1">
+                  <Minus className="h-3 w-3" />
+                </Button>
+                <div className="relative flex items-center">
+                  <FaMagnifyingGlass className="absolute left-2 top-1/2 h-4 w-4 -translate-y-1/2 transform" />
+                  <Input placeholder="0" className="pl-8 w-[4.7rem]" type="number" />
+                </div>
+                <Button variant="ghost" size={null} className="px-1">
+                  <Plus className="h-3 w-3" />
+                </Button>
+              </div>
+
+              <div className="flex gap-1 bg-gray-900 rounded-md p-1">
+                <Button variant="ghost" size={null} className="px-1">
+                  <Minus className="h-3 w-3" />
+                </Button>
+                <div className="relative flex items-center">
+                  <FaMagnifyingGlass className="absolute left-2 top-1/2 h-4 w-4 -translate-y-1/2 transform" />
+                  <Input placeholder="0" className="pl-8 w-[4.7rem]" type="number" />
+                </div>
+                <Button variant="ghost" size={null} className="px-1">
+                  <Plus className="h-3 w-3" />
+                </Button>
+              </div>
+
+              <div className="flex gap-1 bg-gray-900 rounded-md p-1">
+                <Button variant="ghost" size={null} className="px-1">
+                  <Minus className="h-3 w-3" />
+                </Button>
+                <div className="relative flex items-center">
+                  <FaMagnifyingGlass className="absolute left-2 top-1/2 h-4 w-4 -translate-y-1/2 transform" />
+                  <Input placeholder="0" className="pl-8 w-[4.7rem]" type="number" />
+                </div>
+                <Button variant="ghost" size={null} className="px-1">
+                  <Plus className="h-3 w-3" />
+                </Button>
+              </div>
+
+            </div>
               <div className="flex gap-4">
                 <Button variant={"outline"}>Próximo Jogador</Button>
                 <Drawer>
@@ -188,7 +241,6 @@ const game7wonders = () => {
                   </DrawerContent>
                 </Drawer>
               </div>
-            </div>
           </div>
         </div>
       </main>
