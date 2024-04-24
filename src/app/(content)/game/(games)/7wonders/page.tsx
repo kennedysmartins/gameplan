@@ -16,7 +16,7 @@ import {
   DrawerTrigger,
 } from "@/components/ui/drawer";
 
-const game7wonders = () => {
+const Game7wonders = () => {
   const [value, setValue] = useState(0);
 
   const increment = () => {
@@ -248,4 +248,4 @@ const game7wonders = () => {
   );
 };
 
-export default game7wonders;
+export default Game7wonders;
