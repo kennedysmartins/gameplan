@@ -10,7 +10,7 @@ export default function Home() {
       <main className=" container text-2xl gap-2 my-5">
         <div className="flex items-center justify-center">
           <Image
-            src="/gameplan-logo-shadow.png"
+            src="/gameplan-logo.png"
             width={170}
             height={170}
             alt="GamePlan Logo"
