@@ -227,15 +227,15 @@ const game7wonders = () => {
                   </DrawerTrigger>
                   <DrawerContent>
                     <DrawerHeader>
-                      <DrawerTitle>Are you absolutely sure?</DrawerTitle>
+                      <DrawerTitle>Você tem certeza?</DrawerTitle>
                       <DrawerDescription>
-                        This action cannot be undone.
+                        Essa ação não pode ser desfeita.
                       </DrawerDescription>
                     </DrawerHeader>
                     <DrawerFooter>
-                      <Button>Submit</Button>
+                      <Button>Calcular</Button>
                       <DrawerClose>
-                        <Button variant="outline">Cancel</Button>
+                        <Button variant="outline">Cancelar</Button>
                       </DrawerClose>
                     </DrawerFooter>
                   </DrawerContent>
