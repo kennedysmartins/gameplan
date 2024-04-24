@@ -1,6 +1,7 @@
 import type { Metadata } from "next"
 import { ThemeProvider } from "@/contexts/ThemeProvider"
 import "./globals.css"
+import Navigation from "@/components/Navigation"
 
 export const metadata: Metadata = {
   title: "GamePlan",
@@ -20,6 +21,8 @@ export default function RootLayout({
           defaultTheme="dark"
           disableTransitionOnChange
         >
+      <Navigation />
+
           {children}
         </ThemeProvider>
       </body>
