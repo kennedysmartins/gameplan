@@ -16,7 +16,7 @@ const game = () => {
         <div className="flex flex-wrap gap-4 w-56 items-center justify-center">
           <Link href="/game/7wonders">
 
-          <Button className="w-24" variant={"default"}>7 Wonders</Button>
+          <Button className="w-24" variant={"outline"}><img src="https://cdn.svc.asmodee.net/production-unboxnowcom/uploads/2021/12/7Wonders-noirblanc.png" alt="7 Wonders"/></Button>
           </Link>
           <Button className="w-24" variant={"default"}>T2R</Button>
           <Button className="w-24" variant={"default"}>GWT</Button>
