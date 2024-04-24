@@ -1,7 +1,6 @@
 import Navbar from "@/components/Navbar";
 import Navigation from "@/components/Navigation";
 import { Button } from "@/components/ui/button";
-import Image from "next/image";
 import Link from "next/link";
 
 export default function Home() {
@@ -9,11 +8,10 @@ export default function Home() {
     <>
       <main className=" container text-2xl gap-2 my-5">
         <div className="flex items-center justify-center">
-          <Image
+          <img
             src="/gameplan-logo.png"
-            width={170}
-            height={170}
             alt="GamePlan Logo"
+            className="w-40 "
           />
         </div>
         <div className="flex flex-col items-center gap-4">

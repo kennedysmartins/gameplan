@@ -7,11 +7,10 @@ const game = () => {
   return (
     <main className=" container text-2xl gap-2 my-5">
       <div className="flex items-center justify-center my-8">
-          <Image
+          <img
             src="/select-game.png"
-            width={170}
-            height={170}
             alt="GamePlan Logo"
+            className="w-56"
           />
         </div>
       <div className="flex flex-col items-center gap-4">
