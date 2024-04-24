@@ -21,7 +21,7 @@ export default function RootLayout({
           defaultTheme="dark"
           disableTransitionOnChange
         >
-      <Navigation />
+      {/* <Navigation /> */}
 
           {children}
         </ThemeProvider>
