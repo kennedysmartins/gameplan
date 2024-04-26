@@ -167,7 +167,7 @@ const T2R = () => {
             <Carousel setApi={setApi}>
               <CarouselContent>
                 {players.map((player) => (
-                  <CarouselItem className="flex items-center justify-center">
+                  <CarouselItem className="flex items-center justify-center" key={player.id}>
                     <div
                       className="flex flex-wrap gap-4 w-72 items-center justify-start my-4"
                       key={player.id}
