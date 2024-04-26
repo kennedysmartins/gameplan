@@ -74,465 +74,236 @@ const Game7wonders = () => {
         <div className="flex flex-col items-center gap-4">
           <div className="flex flex-wrap gap-4 w-72 items-center justify-center text-center">
             <Form {...form}>
-              <form onSubmit={form.handleSubmit(onSubmit)}>
+              <form
+                onSubmit={form.handleSubmit(onSubmit)}
+              >
                 <Carousel>
                   <CarouselContent>
                     <CarouselItem>
                       <div className="flex flex-wrap gap-4 w-72 items-center justify-center my-4">
-                        <h2>Escreva seu nome</h2>
+                      <h2>Escreva seu nome</h2>
 
-                        <div className="relative w-96 flex items-center mx-2">
-                          <User className="absolute left-2 top-1/2 h-4 w-4 -translate-y-1/2 transform" />
-                          <Input
-                            className="pl-8 h-11"
-                            placeholder="Participante 1"
-                          />
-                        </div>
-
-                        <h2>Distrubua seus pontos</h2>
-                        <div className="flex gap-1 bg-gray-900 rounded-md p-1">
-                          <Button
-                            variant="ghost"
-                            size={null}
-                            className="px-1"
-                            onClick={decrement}
-                          >
-                            <Minus className="h-3 w-3" />
-                          </Button>
-                          <div className="relative flex items-center">
-                            <FaMagnifyingGlass className="absolute left-2 top-1/2 h-4 w-4 -translate-y-1/2 transform" />
-                            <Input
-                              placeholder="0"
-                              value={value}
-                              onChange={(e) =>
-                                setValue(parseInt(e.target.value))
-                              }
-                              className="pl-8 w-[4.7rem]"
-                              type="number"
-                            />
-                          </div>
-                          <Button
-                            variant="ghost"
-                            size={null}
-                            className="px-1"
-                            onClick={increment}
-                          >
-                            <Plus className="h-3 w-3" />
-                          </Button>
-                        </div>
-
-                        <div className="flex gap-1 bg-gray-900 rounded-md p-1">
-                          <Button variant="ghost" size={null} className="px-1">
-                            <Minus className="h-3 w-3" />
-                          </Button>
-                          <div className="relative flex items-center">
-                            <FaMagnifyingGlass className="absolute left-2 top-1/2 h-4 w-4 -translate-y-1/2 transform" />
-                            <Input
-                              placeholder="0"
-                              className="pl-8 w-[4.7rem]"
-                              type="number"
-                            />
-                          </div>
-                          <Button variant="ghost" size={null} className="px-1">
-                            <Plus className="h-3 w-3" />
-                          </Button>
-                        </div>
-                        <div className="flex gap-1 bg-gray-900 rounded-md p-1">
-                          <Button variant="ghost" size={null} className="px-1">
-                            <Minus className="h-3 w-3" />
-                          </Button>
-                          <div className="relative flex items-center">
-                            <FaMagnifyingGlass className="absolute left-2 top-1/2 h-4 w-4 -translate-y-1/2 transform" />
-                            <Input
-                              placeholder="0"
-                              className="pl-8 w-[4.7rem]"
-                              type="number"
-                            />
-                          </div>
-                          <Button variant="ghost" size={null} className="px-1">
-                            <Plus className="h-3 w-3" />
-                          </Button>
-                        </div>
-
-                        <div className="flex gap-1 bg-gray-900 rounded-md p-1">
-                          <Button variant="ghost" size={null} className="px-1">
-                            <Minus className="h-3 w-3" />
-                          </Button>
-                          <div className="relative flex items-center">
-                            <FaMagnifyingGlass className="absolute left-2 top-1/2 h-4 w-4 -translate-y-1/2 transform" />
-                            <Input
-                              placeholder="0"
-                              className="pl-8 w-[4.7rem]"
-                              type="number"
-                            />
-                          </div>
-                          <Button variant="ghost" size={null} className="px-1">
-                            <Plus className="h-3 w-3" />
-                          </Button>
-                        </div>
-                        <div className="flex gap-1 bg-gray-900 rounded-md p-1">
-                          <Button variant="ghost" size={null} className="px-1">
-                            <Minus className="h-3 w-3" />
-                          </Button>
-                          <div className="relative flex items-center">
-                            <FaMagnifyingGlass className="absolute left-2 top-1/2 h-4 w-4 -translate-y-1/2 transform" />
-                            <Input
-                              placeholder="0"
-                              className="pl-8 w-[4.7rem]"
-                              type="number"
-                            />
-                          </div>
-                          <Button variant="ghost" size={null} className="px-1">
-                            <Plus className="h-3 w-3" />
-                          </Button>
-                        </div>
-
-                        <div className="flex gap-1 bg-gray-900 rounded-md p-1">
-                          <Button variant="ghost" size={null} className="px-1">
-                            <Minus className="h-3 w-3" />
-                          </Button>
-                          <div className="relative flex items-center">
-                            <FaMagnifyingGlass className="absolute left-2 top-1/2 h-4 w-4 -translate-y-1/2 transform" />
-                            <Input
-                              placeholder="0"
-                              className="pl-8 w-[4.7rem]"
-                              type="number"
-                            />
-                          </div>
-                          <Button variant="ghost" size={null} className="px-1">
-                            <Plus className="h-3 w-3" />
-                          </Button>
-                        </div>
-                        <div className="flex gap-1 bg-gray-900 rounded-md p-1">
-                          <Button variant="ghost" size={null} className="px-1">
-                            <Minus className="h-3 w-3" />
-                          </Button>
-                          <div className="relative flex items-center">
-                            <FaMagnifyingGlass className="absolute left-2 top-1/2 h-4 w-4 -translate-y-1/2 transform" />
-                            <Input
-                              placeholder="0"
-                              className="pl-8 w-[4.7rem]"
-                              type="number"
-                            />
-                          </div>
-                          <Button variant="ghost" size={null} className="px-1">
-                            <Plus className="h-3 w-3" />
-                          </Button>
-                        </div>
-
-                        <div className="flex gap-1 bg-gray-900 rounded-md p-1">
-                          <Button variant="ghost" size={null} className="px-1">
-                            <Minus className="h-3 w-3" />
-                          </Button>
-                          <div className="relative flex items-center">
-                            <FaMagnifyingGlass className="absolute left-2 top-1/2 h-4 w-4 -translate-y-1/2 transform" />
-                            <Input
-                              placeholder="0"
-                              className="pl-8 w-[4.7rem]"
-                              type="number"
-                            />
-                          </div>
-                          <Button variant="ghost" size={null} className="px-1">
-                            <Plus className="h-3 w-3" />
-                          </Button>
-                        </div>
-
-                        <div className="flex gap-1 bg-gray-900 rounded-md p-1">
-                          <Button variant="ghost" size={null} className="px-1">
-                            <Minus className="h-3 w-3" />
-                          </Button>
-                          <div className="relative flex items-center">
-                            <FaMagnifyingGlass className="absolute left-2 top-1/2 h-4 w-4 -translate-y-1/2 transform" />
-                            <Input
-                              placeholder="0"
-                              className="pl-8 w-[4.7rem]"
-                              type="number"
-                            />
-                          </div>
-                          <Button variant="ghost" size={null} className="px-1">
-                            <Plus className="h-3 w-3" />
-                          </Button>
-                        </div>
-
-                        <div className="flex gap-1 bg-gray-900 rounded-md p-1">
-                          <Button variant="ghost" size={null} className="px-1">
-                            <Minus className="h-3 w-3" />
-                          </Button>
-                          <div className="relative flex items-center">
-                            <FaMagnifyingGlass className="absolute left-2 top-1/2 h-4 w-4 -translate-y-1/2 transform" />
-                            <Input
-                              placeholder="0"
-                              className="pl-8 w-[4.7rem]"
-                              type="number"
-                            />
-                          </div>
-                          <Button variant="ghost" size={null} className="px-1">
-                            <Plus className="h-3 w-3" />
-                          </Button>
-                        </div>
-
-                        <div className="flex gap-1 bg-gray-900 rounded-md p-1">
-                          <Button variant="ghost" size={null} className="px-1">
-                            <Minus className="h-3 w-3" />
-                          </Button>
-                          <div className="relative flex items-center">
-                            <FaMagnifyingGlass className="absolute left-2 top-1/2 h-4 w-4 -translate-y-1/2 transform" />
-                            <Input
-                              placeholder="0"
-                              className="pl-8 w-[4.7rem]"
-                              type="number"
-                            />
-                          </div>
-                          <Button variant="ghost" size={null} className="px-1">
-                            <Plus className="h-3 w-3" />
-                          </Button>
-                        </div>
-
-                        <div className="flex gap-1 bg-gray-900 rounded-md p-1">
-                          <Button variant="ghost" size={null} className="px-1">
-                            <Minus className="h-3 w-3" />
-                          </Button>
-                          <div className="relative flex items-center">
-                            <FaMagnifyingGlass className="absolute left-2 top-1/2 h-4 w-4 -translate-y-1/2 transform" />
-                            <Input
-                              placeholder="0"
-                              className="pl-8 w-[4.7rem]"
-                              type="number"
-                            />
-                          </div>
-                          <Button variant="ghost" size={null} className="px-1">
-                            <Plus className="h-3 w-3" />
-                          </Button>
-                        </div>
+                      <div className="relative w-96 flex items-center mx-2">
+                        <User className="absolute left-2 top-1/2 h-4 w-4 -translate-y-1/2 transform" />
+                        <Input
+                          className="pl-8 h-11"
+                          placeholder="Participante 1"
+                        />
                       </div>
-                    </CarouselItem>
-                    <CarouselItem>
-                      <div className="flex flex-wrap gap-4 w-72 items-center justify-center my-4">
-                        <h2>Escreva seu nome</h2>
 
-                        <div className="relative w-96 flex items-center mx-2">
-                          <User className="absolute left-2 top-1/2 h-4 w-4 -translate-y-1/2 transform" />
+                      <h2>Distrubua seus pontos</h2>
+                      <div className="flex gap-1 bg-gray-900 rounded-md p-1">
+                        <Button
+                          variant="ghost"
+                          size={null}
+                          className="px-1"
+                          onClick={decrement}
+                        >
+                          <Minus className="h-3 w-3" />
+                        </Button>
+                        <div className="relative flex items-center">
+                          <FaMagnifyingGlass className="absolute left-2 top-1/2 h-4 w-4 -translate-y-1/2 transform" />
                           <Input
-                            className="pl-8 h-11"
-                            placeholder="Participante 1"
+                            placeholder="0"
+                            value={value}
+                            onChange={(e) => setValue(parseInt(e.target.value))}
+                            className="pl-8 w-[4.7rem]"
+                            type="number"
                           />
                         </div>
+                        <Button
+                          variant="ghost"
+                          size={null}
+                          className="px-1"
+                          onClick={increment}
+                        >
+                          <Plus className="h-3 w-3" />
+                        </Button>
+                      </div>
 
-                        <h2>Distrubua seus pontos</h2>
-                        <div className="flex gap-1 bg-gray-900 rounded-md p-1">
-                          <Button
-                            variant="ghost"
-                            size={null}
-                            className="px-1"
-                            onClick={decrement}
-                          >
-                            <Minus className="h-3 w-3" />
-                          </Button>
-                          <div className="relative flex items-center">
-                            <FaMagnifyingGlass className="absolute left-2 top-1/2 h-4 w-4 -translate-y-1/2 transform" />
-                            <Input
-                              placeholder="0"
-                              value={value}
-                              onChange={(e) =>
-                                setValue(parseInt(e.target.value))
-                              }
-                              className="pl-8 w-[4.7rem]"
-                              type="number"
-                            />
-                          </div>
-                          <Button
-                            variant="ghost"
-                            size={null}
-                            className="px-1"
-                            onClick={increment}
-                          >
-                            <Plus className="h-3 w-3" />
-                          </Button>
+                      <div className="flex gap-1 bg-gray-900 rounded-md p-1">
+                        <Button variant="ghost" size={null} className="px-1">
+                          <Minus className="h-3 w-3" />
+                        </Button>
+                        <div className="relative flex items-center">
+                          <FaMagnifyingGlass className="absolute left-2 top-1/2 h-4 w-4 -translate-y-1/2 transform" />
+                          <Input
+                            placeholder="0"
+                            className="pl-8 w-[4.7rem]"
+                            type="number"
+                          />
                         </div>
+                        <Button variant="ghost" size={null} className="px-1">
+                          <Plus className="h-3 w-3" />
+                        </Button>
+                      </div>
+                      <div className="flex gap-1 bg-gray-900 rounded-md p-1">
+                        <Button variant="ghost" size={null} className="px-1">
+                          <Minus className="h-3 w-3" />
+                        </Button>
+                        <div className="relative flex items-center">
+                          <FaMagnifyingGlass className="absolute left-2 top-1/2 h-4 w-4 -translate-y-1/2 transform" />
+                          <Input
+                            placeholder="0"
+                            className="pl-8 w-[4.7rem]"
+                            type="number"
+                          />
+                        </div>
+                        <Button variant="ghost" size={null} className="px-1">
+                          <Plus className="h-3 w-3" />
+                        </Button>
+                      </div>
 
-                        <div className="flex gap-1 bg-gray-900 rounded-md p-1">
-                          <Button variant="ghost" size={null} className="px-1">
-                            <Minus className="h-3 w-3" />
-                          </Button>
-                          <div className="relative flex items-center">
-                            <FaMagnifyingGlass className="absolute left-2 top-1/2 h-4 w-4 -translate-y-1/2 transform" />
-                            <Input
-                              placeholder="0"
-                              className="pl-8 w-[4.7rem]"
-                              type="number"
-                            />
-                          </div>
-                          <Button variant="ghost" size={null} className="px-1">
-                            <Plus className="h-3 w-3" />
-                          </Button>
+                      <div className="flex gap-1 bg-gray-900 rounded-md p-1">
+                        <Button variant="ghost" size={null} className="px-1">
+                          <Minus className="h-3 w-3" />
+                        </Button>
+                        <div className="relative flex items-center">
+                          <FaMagnifyingGlass className="absolute left-2 top-1/2 h-4 w-4 -translate-y-1/2 transform" />
+                          <Input
+                            placeholder="0"
+                            className="pl-8 w-[4.7rem]"
+                            type="number"
+                          />
                         </div>
-                        <div className="flex gap-1 bg-gray-900 rounded-md p-1">
-                          <Button variant="ghost" size={null} className="px-1">
-                            <Minus className="h-3 w-3" />
-                          </Button>
-                          <div className="relative flex items-center">
-                            <FaMagnifyingGlass className="absolute left-2 top-1/2 h-4 w-4 -translate-y-1/2 transform" />
-                            <Input
-                              placeholder="0"
-                              className="pl-8 w-[4.7rem]"
-                              type="number"
-                            />
-                          </div>
-                          <Button variant="ghost" size={null} className="px-1">
-                            <Plus className="h-3 w-3" />
-                          </Button>
+                        <Button variant="ghost" size={null} className="px-1">
+                          <Plus className="h-3 w-3" />
+                        </Button>
+                      </div>
+                      <div className="flex gap-1 bg-gray-900 rounded-md p-1">
+                        <Button variant="ghost" size={null} className="px-1">
+                          <Minus className="h-3 w-3" />
+                        </Button>
+                        <div className="relative flex items-center">
+                          <FaMagnifyingGlass className="absolute left-2 top-1/2 h-4 w-4 -translate-y-1/2 transform" />
+                          <Input
+                            placeholder="0"
+                            className="pl-8 w-[4.7rem]"
+                            type="number"
+                          />
                         </div>
+                        <Button variant="ghost" size={null} className="px-1">
+                          <Plus className="h-3 w-3" />
+                        </Button>
+                      </div>
 
-                        <div className="flex gap-1 bg-gray-900 rounded-md p-1">
-                          <Button variant="ghost" size={null} className="px-1">
-                            <Minus className="h-3 w-3" />
-                          </Button>
-                          <div className="relative flex items-center">
-                            <FaMagnifyingGlass className="absolute left-2 top-1/2 h-4 w-4 -translate-y-1/2 transform" />
-                            <Input
-                              placeholder="0"
-                              className="pl-8 w-[4.7rem]"
-                              type="number"
-                            />
-                          </div>
-                          <Button variant="ghost" size={null} className="px-1">
-                            <Plus className="h-3 w-3" />
-                          </Button>
+                      <div className="flex gap-1 bg-gray-900 rounded-md p-1">
+                        <Button variant="ghost" size={null} className="px-1">
+                          <Minus className="h-3 w-3" />
+                        </Button>
+                        <div className="relative flex items-center">
+                          <FaMagnifyingGlass className="absolute left-2 top-1/2 h-4 w-4 -translate-y-1/2 transform" />
+                          <Input
+                            placeholder="0"
+                            className="pl-8 w-[4.7rem]"
+                            type="number"
+                          />
                         </div>
-                        <div className="flex gap-1 bg-gray-900 rounded-md p-1">
-                          <Button variant="ghost" size={null} className="px-1">
-                            <Minus className="h-3 w-3" />
-                          </Button>
-                          <div className="relative flex items-center">
-                            <FaMagnifyingGlass className="absolute left-2 top-1/2 h-4 w-4 -translate-y-1/2 transform" />
-                            <Input
-                              placeholder="0"
-                              className="pl-8 w-[4.7rem]"
-                              type="number"
-                            />
-                          </div>
-                          <Button variant="ghost" size={null} className="px-1">
-                            <Plus className="h-3 w-3" />
-                          </Button>
+                        <Button variant="ghost" size={null} className="px-1">
+                          <Plus className="h-3 w-3" />
+                        </Button>
+                      </div>
+                      <div className="flex gap-1 bg-gray-900 rounded-md p-1">
+                        <Button variant="ghost" size={null} className="px-1">
+                          <Minus className="h-3 w-3" />
+                        </Button>
+                        <div className="relative flex items-center">
+                          <FaMagnifyingGlass className="absolute left-2 top-1/2 h-4 w-4 -translate-y-1/2 transform" />
+                          <Input
+                            placeholder="0"
+                            className="pl-8 w-[4.7rem]"
+                            type="number"
+                          />
                         </div>
+                        <Button variant="ghost" size={null} className="px-1">
+                          <Plus className="h-3 w-3" />
+                        </Button>
+                      </div>
 
-                        <div className="flex gap-1 bg-gray-900 rounded-md p-1">
-                          <Button variant="ghost" size={null} className="px-1">
-                            <Minus className="h-3 w-3" />
-                          </Button>
-                          <div className="relative flex items-center">
-                            <FaMagnifyingGlass className="absolute left-2 top-1/2 h-4 w-4 -translate-y-1/2 transform" />
-                            <Input
-                              placeholder="0"
-                              className="pl-8 w-[4.7rem]"
-                              type="number"
-                            />
-                          </div>
-                          <Button variant="ghost" size={null} className="px-1">
-                            <Plus className="h-3 w-3" />
-                          </Button>
+                      <div className="flex gap-1 bg-gray-900 rounded-md p-1">
+                        <Button variant="ghost" size={null} className="px-1">
+                          <Minus className="h-3 w-3" />
+                        </Button>
+                        <div className="relative flex items-center">
+                          <FaMagnifyingGlass className="absolute left-2 top-1/2 h-4 w-4 -translate-y-1/2 transform" />
+                          <Input
+                            placeholder="0"
+                            className="pl-8 w-[4.7rem]"
+                            type="number"
+                          />
                         </div>
-                        <div className="flex gap-1 bg-gray-900 rounded-md p-1">
-                          <Button variant="ghost" size={null} className="px-1">
-                            <Minus className="h-3 w-3" />
-                          </Button>
-                          <div className="relative flex items-center">
-                            <FaMagnifyingGlass className="absolute left-2 top-1/2 h-4 w-4 -translate-y-1/2 transform" />
-                            <Input
-                              placeholder="0"
-                              className="pl-8 w-[4.7rem]"
-                              type="number"
-                            />
-                          </div>
-                          <Button variant="ghost" size={null} className="px-1">
-                            <Plus className="h-3 w-3" />
-                          </Button>
-                        </div>
+                        <Button variant="ghost" size={null} className="px-1">
+                          <Plus className="h-3 w-3" />
+                        </Button>
+                      </div>
 
-                        <div className="flex gap-1 bg-gray-900 rounded-md p-1">
-                          <Button variant="ghost" size={null} className="px-1">
-                            <Minus className="h-3 w-3" />
-                          </Button>
-                          <div className="relative flex items-center">
-                            <FaMagnifyingGlass className="absolute left-2 top-1/2 h-4 w-4 -translate-y-1/2 transform" />
-                            <Input
-                              placeholder="0"
-                              className="pl-8 w-[4.7rem]"
-                              type="number"
-                            />
-                          </div>
-                          <Button variant="ghost" size={null} className="px-1">
-                            <Plus className="h-3 w-3" />
-                          </Button>
+                      <div className="flex gap-1 bg-gray-900 rounded-md p-1">
+                        <Button variant="ghost" size={null} className="px-1">
+                          <Minus className="h-3 w-3" />
+                        </Button>
+                        <div className="relative flex items-center">
+                          <FaMagnifyingGlass className="absolute left-2 top-1/2 h-4 w-4 -translate-y-1/2 transform" />
+                          <Input
+                            placeholder="0"
+                            className="pl-8 w-[4.7rem]"
+                            type="number"
+                          />
                         </div>
+                        <Button variant="ghost" size={null} className="px-1">
+                          <Plus className="h-3 w-3" />
+                        </Button>
+                      </div>
 
-                        <div className="flex gap-1 bg-gray-900 rounded-md p-1">
-                          <Button variant="ghost" size={null} className="px-1">
-                            <Minus className="h-3 w-3" />
-                          </Button>
-                          <div className="relative flex items-center">
-                            <FaMagnifyingGlass className="absolute left-2 top-1/2 h-4 w-4 -translate-y-1/2 transform" />
-                            <Input
-                              placeholder="0"
-                              className="pl-8 w-[4.7rem]"
-                              type="number"
-                            />
-                          </div>
-                          <Button variant="ghost" size={null} className="px-1">
-                            <Plus className="h-3 w-3" />
-                          </Button>
+                      <div className="flex gap-1 bg-gray-900 rounded-md p-1">
+                        <Button variant="ghost" size={null} className="px-1">
+                          <Minus className="h-3 w-3" />
+                        </Button>
+                        <div className="relative flex items-center">
+                          <FaMagnifyingGlass className="absolute left-2 top-1/2 h-4 w-4 -translate-y-1/2 transform" />
+                          <Input
+                            placeholder="0"
+                            className="pl-8 w-[4.7rem]"
+                            type="number"
+                          />
                         </div>
+                        <Button variant="ghost" size={null} className="px-1">
+                          <Plus className="h-3 w-3" />
+                        </Button>
+                      </div>
 
-                        <div className="flex gap-1 bg-gray-900 rounded-md p-1">
-                          <Button variant="ghost" size={null} className="px-1">
-                            <Minus className="h-3 w-3" />
-                          </Button>
-                          <div className="relative flex items-center">
-                            <FaMagnifyingGlass className="absolute left-2 top-1/2 h-4 w-4 -translate-y-1/2 transform" />
-                            <Input
-                              placeholder="0"
-                              className="pl-8 w-[4.7rem]"
-                              type="number"
-                            />
-                          </div>
-                          <Button variant="ghost" size={null} className="px-1">
-                            <Plus className="h-3 w-3" />
-                          </Button>
+                      <div className="flex gap-1 bg-gray-900 rounded-md p-1">
+                        <Button variant="ghost" size={null} className="px-1">
+                          <Minus className="h-3 w-3" />
+                        </Button>
+                        <div className="relative flex items-center">
+                          <FaMagnifyingGlass className="absolute left-2 top-1/2 h-4 w-4 -translate-y-1/2 transform" />
+                          <Input
+                            placeholder="0"
+                            className="pl-8 w-[4.7rem]"
+                            type="number"
+                          />
                         </div>
+                        <Button variant="ghost" size={null} className="px-1">
+                          <Plus className="h-3 w-3" />
+                        </Button>
+                      </div>
 
-                        <div className="flex gap-1 bg-gray-900 rounded-md p-1">
-                          <Button variant="ghost" size={null} className="px-1">
-                            <Minus className="h-3 w-3" />
-                          </Button>
-                          <div className="relative flex items-center">
-                            <FaMagnifyingGlass className="absolute left-2 top-1/2 h-4 w-4 -translate-y-1/2 transform" />
-                            <Input
-                              placeholder="0"
-                              className="pl-8 w-[4.7rem]"
-                              type="number"
-                            />
-                          </div>
-                          <Button variant="ghost" size={null} className="px-1">
-                            <Plus className="h-3 w-3" />
-                          </Button>
+                      <div className="flex gap-1 bg-gray-900 rounded-md p-1">
+                        <Button variant="ghost" size={null} className="px-1">
+                          <Minus className="h-3 w-3" />
+                        </Button>
+                        <div className="relative flex items-center">
+                          <FaMagnifyingGlass className="absolute left-2 top-1/2 h-4 w-4 -translate-y-1/2 transform" />
+                          <Input
+                            placeholder="0"
+                            className="pl-8 w-[4.7rem]"
+                            type="number"
+                          />
                         </div>
-
-                        <div className="flex gap-1 bg-gray-900 rounded-md p-1">
-                          <Button variant="ghost" size={null} className="px-1">
-                            <Minus className="h-3 w-3" />
-                          </Button>
-                          <div className="relative flex items-center">
-                            <FaMagnifyingGlass className="absolute left-2 top-1/2 h-4 w-4 -translate-y-1/2 transform" />
-                            <Input
-                              placeholder="0"
-                              className="pl-8 w-[4.7rem]"
-                              type="number"
-                            />
-                          </div>
-                          <Button variant="ghost" size={null} className="px-1">
-                            <Plus className="h-3 w-3" />
-                          </Button>
-                        </div>
+                        <Button variant="ghost" size={null} className="px-1">
+                          <Plus className="h-3 w-3" />
+                        </Button>
+                      </div>
                       </div>
                     </CarouselItem>
                   </CarouselContent>
