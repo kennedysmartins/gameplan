@@ -6,6 +6,7 @@ import {
   FaHouseMedical,
   FaMagnifyingGlass,
   FaSheetPlastic,
+  FaTrash,
 } from "react-icons/fa6";
 import * as z from "zod";
 import * as React from "react";
@@ -93,9 +94,9 @@ const T2R = () => {
           points: Array(10).fill(0),
         },
       ]);
-      // Call carousel API to go to the next slide after adding player
-      api.scrollNext(true);
-      console.log("ScrollNext");
+      setTimeout(() => {
+        api.scrollTo(players.length, true);
+      }, 300);
     }
   };
 
@@ -137,11 +138,13 @@ const T2R = () => {
     defaultValues: {
       id: "",
       participants: 1,
-      players: [{
-        id: 0,
-        name: "",
-        points: [0],
-      }]
+      players: [
+        {
+          id: 0,
+          name: "",
+          points: [0],
+        },
+      ],
     },
   });
 
@@ -167,7 +170,10 @@ const T2R = () => {
             <Carousel setApi={setApi}>
               <CarouselContent>
                 {players.map((player) => (
-                  <CarouselItem className="flex items-center justify-center" key={player.id}>
+                  <CarouselItem
+                    className="flex items-center justify-center"
+                    key={player.id}
+                  >
                     <div
                       className="flex flex-wrap gap-4 w-72 items-center justify-start my-4"
                       key={player.id}
@@ -180,15 +186,24 @@ const T2R = () => {
                         control={form.control}
                         name={`players.${player.id}.name`}
                         render={({ field }) => (
-                          <FormItem>
-                            <FormControl className="w-auto">
-                              <div className="relative w-[270px] flex items-center mx-2">
-                                <User className="absolute left-2 top-1/2 h-4 w-4 -translate-y-1/2 transform" />
-                                <Input
-                                  className="pl-8 h-11"
-                                  placeholder={`Participante ${player.id + 1}`}
-                                  {...field}
-                                />
+                          <FormItem className="w-full">
+                            <FormControl>
+                              <div className="flex items-center gap-2">
+                                <div className="relative w-full flex items-center">
+                                  <User className="absolute left-2 top-1/2 h-4 w-4 -translate-y-1/2 transform" />
+                                  <Input
+                                    className="pl-8 h-11"
+                                    placeholder={`Participante ${
+                                      player.id + 1
+                                    }`}
+                                    {...field}
+                                  />
+                                </div>
+                                {player.id !== 0 && (
+                                <Button type="button" onClick={() => removePlayer(player.id)} variant="destructive" size="icon">
+                                  <FaTrash className="h-4 w-4" />
+                                </Button>
+                                )}
                               </div>
                             </FormControl>
                           </FormItem>
@@ -256,16 +271,23 @@ const T2R = () => {
                     </div>
                   </CarouselItem>
                 ))}
-
               </CarouselContent>
             </Carousel>
             <div className="flex items-center justify-center gap-4">
-              <Button className="select-none" onClick={addPlayer}>Adicionar jogador</Button>
-              <Button className="select-none" type="submit">Remover</Button>
+              <Button className="select-none" onClick={addPlayer}>
+                Adicionar jogador
+              </Button>
+              <Button className="select-none" type="submit">
+                Remover
+              </Button>
 
               <Drawer>
                 <DrawerTrigger asChild>
-                  <Button className="select-none" type="button" variant="default">
+                  <Button
+                    className="select-none"
+                    type="button"
+                    variant="default"
+                  >
                     Finalizar
                   </Button>
                 </DrawerTrigger>
