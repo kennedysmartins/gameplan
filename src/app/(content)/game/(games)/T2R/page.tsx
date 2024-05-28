@@ -1,18 +1,30 @@
 "use client";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Minus, Plus, User } from "lucide-react";
+import { Minus, Plus, Train, User } from "lucide-react";
+import { GiMineWagon } from "react-icons/gi";
+import {
+  TbCircleDashedNumber1,
+  TbCircleDashedNumber2,
+  TbCircleDashedNumber3,
+  TbCircleDashedNumber4,
+  TbCircleDashedNumber5,
+  TbCircleDashedNumber6,
+  TbCircleDashedNumber7,
+  TbCircleDashedNumber8,
+} from "react-icons/tb";
 import {
   FaHouseMedical,
   FaMagnifyingGlass,
   FaSheetPlastic,
+  FaTrain,
   FaTrash,
 } from "react-icons/fa6";
 import * as z from "zod";
 import * as React from "react";
 import { toast } from "sonner";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
+import { useForm, Controller } from "react-hook-form";
 import {
   Carousel,
   CarouselApi,
@@ -33,54 +45,85 @@ import {
   DrawerTrigger,
 } from "@/components/ui/drawer";
 import { Form, FormControl, FormField, FormItem } from "@/components/ui/form";
+import Modal from "@/components/Modal";
 
 const pointFields = [
   {
-    name: "Military",
+    name: "1",
     value: 0,
-    icon: FaMagnifyingGlass,
+    multiplier: 1,
+    icon: TbCircleDashedNumber1,
   },
   {
-    name: "Energy",
+    name: "2",
     value: 0,
-    icon: FaHouseMedical,
+    multiplier: 2,
+
+    icon: TbCircleDashedNumber2,
   },
   {
-    name: "Points",
+    name: "3",
     value: 0,
-    icon: FaSheetPlastic,
+    multiplier: 4,
+    icon: TbCircleDashedNumber3,
+  },
+  {
+    name: "4",
+    value: 0,
+    multiplier: 7,
+    icon: TbCircleDashedNumber4,
+  },
+  {
+    name: "5",
+    value: 0,
+    multiplier: 10,
+    icon: TbCircleDashedNumber5,
+  },
+  {
+    name: "6",
+    value: 0,
+    multiplier: 15,
+    icon: TbCircleDashedNumber6,
+  },
+  {
+    name: "7",
+    value: 0,
+    multiplier: 18,
+    icon: TbCircleDashedNumber7,
+  },
+  {
+    name: "8",
+    value: 0,
+    multiplier: 21,
+    icon: TbCircleDashedNumber8,
   },
 ];
 
-const formSchema = z.object({
-  id: z.string(),
-  participants: z.number(),
-  players: z.array(
-    z.object({
-      id: z.number(),
-      name: z.string(),
-      points: z.array(z.number()),
-    })
-  ),
-});
+const formSchema = z.any();
 
 const T2R = () => {
   const [players, setPlayers] = React.useState([
     {
       id: 0,
       name: "",
-      points: Array(10).fill(0),
+      points: Array(8).fill(0),
     },
   ]);
   const [api, setApi] = React.useState<CarouselApi>();
+  const [current, setCurrent] = React.useState(0);
+  const [isOpen, setIsOpen] = React.useState(false);
+  const [totalPoints, setTotalPoints] = React.useState<number | null>(null);
+  const [winner, setWinner] = React.useState<string | null>(null);
 
   React.useEffect(() => {
     if (!api) {
       return;
     }
 
+    setCurrent(api.selectedScrollSnap() + 1);
+
     api.on("select", () => {
-      // Do something on select.
+      setCurrent(api.selectedScrollSnap() + 1);
     });
   }, [api]);
 
@@ -91,7 +134,7 @@ const T2R = () => {
         {
           id: prevPlayers.length,
           name: "",
-          points: Array(10).fill(0),
+          points: Array(8).fill(0),
         },
       ]);
       setTimeout(() => {
@@ -114,11 +157,22 @@ const T2R = () => {
     );
   };
 
+  const calculateScore = () => {
+    let total = 0;
+    players.forEach((player) => {
+      player.points.forEach((points, index) => {
+        total += points * pointFields[index].multiplier;
+      });
+    });
+    setTotalPoints(total);
+  };
+
   const handleChangePoints = (
     playerId: number,
     pointIndex: number,
     value: number
   ) => {
+    console.log(players);
     setPlayers((prevPlayers) =>
       prevPlayers.map((player) =>
         player.id === playerId
@@ -135,6 +189,7 @@ const T2R = () => {
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
+    mode: "onChange",
     defaultValues: {
       id: "",
       participants: 1,
@@ -142,32 +197,51 @@ const T2R = () => {
         {
           id: 0,
           name: "",
-          points: [0],
+          points: Array(8).fill(0),
         },
       ],
     },
   });
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
-    console.log(values);
-    alert(JSON.stringify(values));
+    try {
+      console.log(players);
+  
+      // Calcular o score de cada jogador
+      const playerScores = players.map((player) => {
+        const score = player.points.reduce((acc, cur, index) => {
+          return acc + cur * pointFields[index].multiplier;
+        }, 0);
+        return { name: player.name, score };
+      });
+  
+      // Encontrar o jogador com a pontuação mais alta
+      const winningScore = Math.max(...playerScores.map((player) => player.score));
+      const winningPlayer = playerScores.find((player) => player.score === winningScore)?.name || null;
+  
+      setWinner(winningPlayer);
+      setIsOpen(true);
 
-    toast.success("Configurações editadas com sucesso!");
+  
+      toast.success("Configurações editadas com sucesso!");
+    } catch (error) {
+      console.error("Validation Error:", error);
+    }
   }
+
   return (
     <>
-      <main className="container text-2xl gap-2 my-5">
+      <main className={`w-full mx-auto text-2xl gap-2 my-5 max-xs:px-7`}>
         <div className="flex items-center justify-center my-8">
-          <img
-            src="https://cdn.svc.asmodee.net/production-unboxnowcom/uploads/2022/01/TTR_LogoWhite-1.png"
-            alt="T2R Logo"
-            className="w-56"
-          />
+          <img src="/T2R.png" alt="T2R Logo" className="w-56" />
         </div>
 
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)}>
-            <Carousel setApi={setApi}>
+            <Carousel
+              className="flex items-center justify-center mx-5"
+              setApi={setApi}
+            >
               <CarouselContent>
                 {players.map((player) => (
                   <CarouselItem
@@ -175,7 +249,7 @@ const T2R = () => {
                     key={player.id}
                   >
                     <div
-                      className="flex flex-wrap gap-4 w-72 items-center justify-start my-4"
+                      className="flex flex-wrap gap-4 w-[17.5rem] items-center justify-start my-4"
                       key={player.id}
                     >
                       <div className="w-96 flex items-center justify-center text-center mx-2 text-xl font-medium">
@@ -193,16 +267,28 @@ const T2R = () => {
                                   <User className="absolute left-2 top-1/2 h-4 w-4 -translate-y-1/2 transform" />
                                   <Input
                                     className="pl-8 h-11"
+                                    {...field}
+                                    onChange={(e) => {
+                                      field.onChange(e); // Update the form state
+                                      handleChangeName(
+                                        player.id,
+                                        e.target.value
+                                      ); // Update the players state
+                                    }}
                                     placeholder={`Participante ${
                                       player.id + 1
                                     }`}
-                                    {...field}
                                   />
                                 </div>
                                 {player.id !== 0 && (
-                                <Button type="button" onClick={() => removePlayer(player.id)} variant="destructive" size="icon">
-                                  <FaTrash className="h-4 w-4" />
-                                </Button>
+                                  <Button
+                                    type="button"
+                                    onClick={() => removePlayer(player.id)}
+                                    variant="destructive"
+                                    size="icon"
+                                  >
+                                    <FaTrash className="h-4 w-4" />
+                                  </Button>
                                 )}
                               </div>
                             </FormControl>
@@ -214,82 +300,128 @@ const T2R = () => {
                         <h3 className="select-none">Distribua seus pontos</h3>
                       </div>
 
-                      {pointFields.map((pointField, index) => (
-                        <FormField
-                          control={form.control}
-                          name={`players.${player.id}.points.${index}`}
-                          key={index}
-                          render={({ field }) => (
-                            <FormItem>
-                              <FormControl className="w-auto">
-                                <div className="flex gap-1 bg-gray-900 rounded-md p-1">
-                                  <Button
-                                    variant="ghost"
-                                    size={null}
-                                    className="px-1"
-                                    onClick={() =>
-                                      handleChangePoints(
-                                        player.id,
-                                        index,
-                                        player.points[index] - 1
-                                      )
-                                    }
-                                    type="button"
-                                  >
-                                    <Minus className="h-3 w-3" />
-                                  </Button>
-                                  <div className="relative flex items-center">
-                                    <pointField.icon className="absolute left-2 top-1/2 h-4 w-4 -translate-y-1/2 transform" />
-                                    <Input
-                                      placeholder="0"
-                                      {...field}
-                                      className="pl-8 w-[4.7rem]"
-                                      type="number"
-                                    />
+                      <div className="grid grid-cols-2 gap-4">
+                        {pointFields.map((pointField, index) => (
+                          <FormField
+                            control={form.control}
+                            name={`players.${player.id}.points.${index}`}
+                            key={index}
+                            render={({ field }) => (
+                              <FormItem>
+                                <FormControl className="w-auto">
+                                  <div className="flex gap-1 bg-gray-900 rounded-md p-1">
+                                    <Button
+                                      variant="ghost"
+                                      size="icon"
+                                      className="px-1"
+                                      onClick={() =>
+                                        handleChangePoints(
+                                          player.id,
+                                          index,
+                                          player.points[index] - 1
+                                        )
+                                      }
+                                      type="button"
+                                    >
+                                      <Minus className="h-3 w-3" />
+                                    </Button>
+                                    <div className="relative flex items-center">
+                                      <pointField.icon className="absolute left-2 top-1/2 h-4 w-4 -translate-y-1/2 transform" />
+                                      <Controller
+                                        name={`players.${player.id}.points.${index}`}
+                                        control={form.control}
+                                        render={({ field }) => (
+                                          <Input
+                                            {...field}
+                                            value={player.points[index]}
+                                            onChange={(e) =>
+                                              handleChangePoints(
+                                                player.id,
+                                                index,
+                                                parseInt(e.target.value, 10) ||
+                                                  0
+                                              )
+                                            }
+                                            placeholder="0"
+                                            className="pl-8 w-[4.7rem]"
+                                            type="number"
+                                          />
+                                        )}
+                                      />
+                                    </div>
+                                    <Button
+                                      variant="ghost"
+                                      size="icon"
+                                      className="px-1"
+                                      onClick={() =>
+                                        handleChangePoints(
+                                          player.id,
+                                          index,
+                                          player.points[index] + 1
+                                        )
+                                      }
+                                      type="button"
+                                    >
+                                      <Plus className="h-3 w-3" />
+                                    </Button>
                                   </div>
-                                  <Button
-                                    variant="ghost"
-                                    size={null}
-                                    className="px-1"
-                                    onClick={() =>
-                                      handleChangePoints(
-                                        player.id,
-                                        index,
-                                        player.points[index] + 1
-                                      )
-                                    }
-                                    type="button"
-                                  >
-                                    <Plus className="h-3 w-3" />
-                                  </Button>
-                                </div>
-                              </FormControl>
-                            </FormItem>
-                          )}
-                        />
-                      ))}
+                                </FormControl>
+                              </FormItem>
+                            )}
+                          />
+                        ))}
+                      </div>
                     </div>
                   </CarouselItem>
                 ))}
               </CarouselContent>
             </Carousel>
+            {players.length > 1 && (
+              <>
+                <div className="py-2 text-center text-sm text-muted-foreground">
+                  Player {current} of {players.length}
+                </div>
+              </>
+            )}
             <div className="flex items-center justify-center gap-4">
-              <Button className="select-none" onClick={addPlayer}>
+              <Button type="button" className="select-none" onClick={addPlayer}>
                 Adicionar jogador
               </Button>
-              <Button className="select-none" type="submit">
-                Remover
+
+              <Button
+                type="submit"
+                variant="default"
+                onClick={form.handleSubmit(onSubmit)}
+              >
+                Calcular
               </Button>
 
-              <Drawer>
+              {isOpen && (
+  <Modal onClose={() => setIsOpen(false)}>
+    <div className="p-4">
+      <h2 className="text-xl font-bold mb-4">Score:</h2>
+      {players.map((player) => (
+        <div key={player.id} className="mb-2">
+          <span className="font-bold">{player.name}:</span>{" "}
+          {player.points.reduce((acc, cur, index) => acc + cur * pointFields[index].multiplier, 0)}
+        </div>
+      ))}
+      {winner && <div className="mt-4">Vencedor: {winner}</div>}
+    </div>
+  </Modal>
+)}
+
+              {/* <Drawer>
                 <DrawerTrigger asChild>
-                  <Button
-                    className="select-none"
-                    type="button"
-                    variant="default"
-                  >
-                    Finalizar
-                  </Button>
+                  <div>
+                    <Button
+                      className="select-none"
+                      type="button"
+                      variant="default"
+                    >
+                      Finalizar
+                    </Button>
+                  </div>
                 </DrawerTrigger>
                 <DrawerContent>
                   <DrawerHeader>
@@ -313,7 +445,7 @@ const T2R = () => {
                     </DrawerClose>
                   </DrawerFooter>
                 </DrawerContent>
-              </Drawer>
+              </Drawer> */}
             </div>
           </form>
         </Form>
